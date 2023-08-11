@@ -2,6 +2,7 @@
 
 
 ![AliveTrack Logo](public/logo.png)
+
 **AliveTrack is an open-source project of [Aliveforms](https://www.aliveforms.com/).**
 
 
@@ -20,6 +21,10 @@ AliveTrack is a lightweight PHP framework designed to help you create websites r
 ## Getting Started
 
 1. Clone the AliveTrack repository to your local environment.
+```
+git clone https://github.com/nabeelalihashmi/alivetrack.git
+
+```
 2. Set up a web server (e.g., Apache, Nginx) to point to the project directory.
 3. Define your HTML templates in the `app` directory, and create corresponding PHP files to handle dynamic content.
 4. Create classes that follow the naming convention and structure outlined below.
