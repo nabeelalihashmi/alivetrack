@@ -1,0 +1,5 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(public|api|ipn|studio|studio_canary|gallery|form|pages|pikachu|favicon.ico|sitemap.xml|robots.txt|BingSiteAuth.xml|ads.txt)($|/) - [L]
+
+RewriteRule ^ index.php [L]

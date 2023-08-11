@@ -1,0 +1,35 @@
+{
+    "Alivetrack Page Template": {
+        "prefix": "aliveforms-page",
+        "body": [
+            "{% block title %}",
+            "\t$1",
+            "{% endblock %}",
+            "",
+            "{% block main %}",
+            "\t$2",
+            "{% endblock %}"
+        ],
+        "description": "Alivetrack Page Template"
+    },
+    "Alivetrack Layout Template": {
+        "prefix": "aliveforms-layout",
+        "body": [
+            "<!DOCTYPE html>",
+            "<html lang=\"en\">",
+            "<head>",
+            "    <meta charset=\"UTF-8\">",
+            "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">",
+            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+            "    <title>{% yield title %}</title>",
+            "</head>",
+            "<body>",
+            "    {% include navbar.html %}",
+            "    {% yield main %}",
+            "    {% include footer.html %}",
+            "</body>",
+            "</html>"
+        ],
+        "description": "Aliveforms Layout Template"
+    }
+}

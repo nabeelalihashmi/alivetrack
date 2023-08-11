@@ -1,0 +1,26 @@
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block main %}
+<script src='https://cdn.jsdelivr.net/gh/nabeelalihashmi/aliveformsjs@master/aliveforms.min.js'></script>
+<script>
+const aliveformsJS = new AliveformsJS();
+const formContainer = document.body;
+const embeddedIframe = aliveformsJS.embedForm(formContainer, 'x3rGYp0BpeankNjV', ['custom-class']);
+</script>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+    }
+</style>
+
+{% endblock %}
+
