@@ -2,6 +2,7 @@
 
 
 ![AliveTrack Logo](public/logo.png)
+
 **AliveTrack is an open-source project of [Aliveforms](https://www.aliveforms.com/).**
 
 
