@@ -1,0 +1,102 @@
+{% block title %}
+Form
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex flex-row flex-wrap gap-2">
+            <div class="card" style="max-width: 16rem;">
+                <div class="card-header">
+                    Section 1
+                </div>
+                <div class="card-body">
+                    Hello, World!
+                    <button id="btn1"> Button </button>
+                </div>
+            </div>
+
+            <div class="card" style="max-width: 16rem;">
+                <div class="card-header">
+                    Section 2
+                </div>
+                <div class="card-body">
+                    Hello, World!
+                    <button id="btn2"> Button 2 </button>
+                </div>
+            </div>
+
+            <div class="card" style="max-width: 16rem;">
+                <div class="card-header">
+                    Section 3
+                </div>
+                <div class="card-body">
+                    Hello, World!
+                    <button id="btn3"> Button 3 </button>
+                </div>
+            </div>
+            <div class="card" style="max-width: 16rem;">
+                <div class="card-header">
+                    Section 3
+                </div>
+                <div class="card-body" id="log">
+                    Hello, World!
+                    <button id="btn4"> Button 3 </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="formContainer" class="shadow-lg border d-none">
+
+    </div>
+</div>
+
+<script src='https://cdn.jsdelivr.net/gh/nabeelalihashmi/aliveformsjs@master/aliveforms.min.js'></script>
+
+<script>
+    const idMaps = {
+        '-1': 'btn1',
+        '0': 'btn2',
+        '1': 'btn3',
+        '2': 'btn4',
+    }
+    const aliveformsJS = new AliveformsJS();
+    const formContainer = document.getElementById('formContainer');
+    const embeddedIframe = aliveformsJS.embedForm(formContainer, 'b9K4Nma6ALQMq3Dw', ['custom-class']);
+    const log = document.querySelector("#log");
+    window.addEventListener('message', function (event) {
+        console.log(event.data)
+        if (event.data == -1) {
+            formContainer.classList.remove('d-none');
+        }
+        if (event.data == 'END') {
+            formContainer.classList.add('d-none');
+        }
+        let btn = document.getElementById(idMaps['' + event.data]);
+        console.log(btn)
+        console.log(btn.offsetTop);
+        let rect = btn.getBoundingClientRect();
+        let offset = 10;
+        formContainer.style.top = rect.top + rect.height + offset + 'px'; 
+        formContainer.style.left = rect.left + 'px';
+        log.innerHTML += event.data + '<br>';
+    });
+
+</script>
+
+<style>
+    #formContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 200px;
+        width: 200px;
+    }
+</style>
+
+
+
+
+{% endblock %}
