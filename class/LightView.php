@@ -72,7 +72,11 @@ class LightView {
 		$code = file_get_contents($filename);
 		if ($first_run == true) {
 			$layout = $this->findClosestLayoutFile(dirname($this->views_path . $file));
+			if (str_ends_with($file, '.md')) {
+				$code = "{% markdown %} $code {% endmarkdown %}";
+			}
 			$code = "{% layout $layout %}" . $code;
+
 		}
 
 		preg_match_all('/{% ?(layout|include) ?\'?(.*?)\'? ?%}/i', $code, $matches, PREG_SET_ORDER);
@@ -145,6 +149,15 @@ class LightView {
 		return $code;
 	}
 	function compileBlockMarkdown($code) {
+		preg_match_all('/{% ?markdown ?(.*?) ?%}(.*?){% ?endmarkdown ?%}/is', $code, $matches, PREG_SET_ORDER);
+		include_once "./class/Parsedown.php";
+		$parser = new Parsedown();
+		foreach ($matches as $value) {
+			$code = str_replace($value[0], $parser->text($value[2]), $code);
+		}
+		return $code;
+	}	
+	function compileBlockMarkdownX($code) {
 		preg_match_all('/{% ?markdown ?(.*?) ?%}(.*?){% ?endmarkdown ?%}/is', $code, $matches, PREG_SET_ORDER);
 		include_once "./class/Parsedown.php";
 		$parser = new Parsedown();

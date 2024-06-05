@@ -6,7 +6,7 @@ $start = microtime(true);
 use IconicCodes\LightView\LightView;
 use Swoole\Http\Server;
 
-include "config.php";
+include "app/config/general.php";
 include "class/LightView.php";
 
 $mode = 'prod';

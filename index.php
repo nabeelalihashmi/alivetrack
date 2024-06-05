@@ -8,6 +8,7 @@ include "app/config/general.php";
 include "class/TinyHTML.php";
 include "class/LightView.php";
 
+$configs = [];
 $mode = 'dev';
 
 $view = new LightView();
@@ -39,7 +40,6 @@ function view($file, $data) {
     global $view;
     return $view->view($file, $data);
 }
-
 
 function json($data) {
     header('Content-Type: application/json');
@@ -146,16 +146,20 @@ if (file_exists($classFile)) {
     $page = ltrim($uri, '/') . '/index.html';
     $view->view('pages/' . $page);
     $success = true;
+} elseif (file_exists('app/pages' . $uri . '.md')) {
+    $page = ltrim($uri, '/') . '.md';
+    $view->view('pages/' . $page);
+    $success = true;
 }
 
 if (!$success) {
-    $view->view('pages/404.html');
+    $view->view('pages/404/index.html');
 }
-echo '<div style="border: 1px solid #333;position: fixed; left: 0; bottom: 0; z-index: 9999; padding: 10px; background-color: white">';
-$memory_size = memory_get_usage();
-$memory_size2 = memory_get_peak_usage();
-// Display memory size into kb, mb etc.
-echo 'Time: ' . (microtime(true) - $start) . "<br>";
-echo 'Used Memory :' . $memory_size  / (1024) . "kb<br>";
-echo 'Peak Memory : ' . $memory_size2 / (1024) . "kb\n";
-echo '</div>';
+// echo '<div style="border: 1px solid #333;position: fixed; left: 0; bottom: 0; z-index: 9999; padding: 10px; background-color: white">';
+// $memory_size = memory_get_usage();
+// $memory_size2 = memory_get_peak_usage();
+// // Display memory size into kb, mb etc.
+// echo 'Time: ' . (microtime(true) - $start) . "<br>";
+// echo 'Used Memory :' . $memory_size  / (1024) . "kb<br>";
+// echo 'Peak Memory : ' . $memory_size2 / (1024) . "kb\n";
+// echo '</div>';
