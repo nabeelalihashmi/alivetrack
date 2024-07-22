@@ -1,32 +1,26 @@
-{% block title %}
-Form
-{% endblock %}
-
-{% block main %}
+{% block title %} Form {% endblock %} {% block main %}
 
 <div class="container-fluid">
-    <div class="row" style="height: calc(100vh - 300px);">
+    <div class="row" style="height: calc(100vh - 300px)">
         <div class="col-6 border" id="formContainer"></div>
         <div class="col-6 border" id="log"></div>
     </div>
 </div>
 
-
-<script src='https://cdn.jsdelivr.net/gh/nabeelalihashmi/aliveformsjs@master/aliveforms.min.js'></script>
-<script> 
-    const aliveformsJS = new AliveformsJS(); const formContainer = document.getElementById('formContainer');
-    const embeddedIframe = aliveformsJS.embedForm(formContainer, 'DvBGxgQGq72joNr7', ['custom-class']);
+<script src="https://cdn.jsdelivr.net/gh/nabeelalihashmi/aliveformsjs@master/aliveforms.min.js"></script>
+<script>
+    const aliveformsJS = new AliveformsJS();
+    const formContainer = document.getElementById("formContainer");
+    const embeddedIframe = aliveformsJS.embedForm(
+        formContainer,
+        "DvBGxgQGq72joNr7",
+        ["custom-class"],
+    );
 
     const log = document.querySelector("#log");
-    window.addEventListener('message', function (event) {
-        log.innerHTML += event.data.message + '<br>';
+    window.addEventListener("message", function (event) {
+        log.innerHTML += event.data.message + "<br>";
     });
-
-
-
 </script>
-
-
-
 
 {% endblock %}
